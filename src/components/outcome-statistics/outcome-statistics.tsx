@@ -4,22 +4,22 @@ import styles from './outcome-statistics.module.scss';
 export const OutcomeStatistics = () => {
     return (
         <div className={styles.root}>
-            <h2 className={styles.title}>Outcome Statistics</h2>
+            <h2 className={styles.title}>Activities Statistics</h2>
             <ul className={styles.list}>
                 <OutcomeStatisticsItem
-                    label="Shopping"
-                    progress={100}
-                    type="shopping"
+                    label="Active"
+                    progress={50}
+                    type="person"
                 />
                 <OutcomeStatisticsItem
-                    label="Electronics"
-                    progress={21}
-                    type="electronics"
+                    label="Closed"
+                    progress={50}
+                    type="person"
                 />
                 <OutcomeStatisticsItem
-                    label="Travel"
-                    progress={74}
-                    type="travel"
+                    label="In Process"
+                    progress={0}
+                    type="person"
                 />
             </ul>
         </div>

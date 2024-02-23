@@ -26,7 +26,7 @@ export const CreditCardSvg = ({
                 <svg width="100%" height="100%" viewBox="0 0 320 206">
                     <text fill="currentColor" fontSize="8" fontWeight="500">
                         <tspan x="20" y="164">
-                            Card holder
+                            Task Owner
                         </tspan>
                     </text>
                     <text fill="currentColor" fontSize="16" fontWeight="bold">
@@ -34,9 +34,9 @@ export const CreditCardSvg = ({
                             {logo ? logo : 'Cloudcash'}
                         </tspan>
                     </text>
-                    <text fill="currentColor" fontSize="21" fontWeight="500">
+                    <text fill="currentColor" fontSize="16" fontWeight="500">
                         <tspan x="20" y="116">
-                            {`${cardNumberStartsWith} •••• •••• ${cardNumberEndsWith}`}
+                            {`${cardNumberStartsWith}${cardNumberEndsWith}`}
                         </tspan>
                     </text>
                     <text fill="currentColor" fontSize="12" fontWeight="500">
@@ -46,12 +46,13 @@ export const CreditCardSvg = ({
                     </text>
                     <text fill="currentColor" fontSize="8" fontWeight="500">
                         <tspan x="128.667" y="164">
-                            Expire date
+                            Date
                         </tspan>
                     </text>
                     <text fill="currentColor" fontSize="12" fontWeight="500">
                         <tspan x="128.667" y="183">
-                            {expireDateMonth}/{expireDateYear}
+                            {/* expireDateMonth/{expireDateYear} */}
+                            {expireDateMonth}
                         </tspan>
                     </text>
                 </svg>

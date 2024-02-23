@@ -5,7 +5,7 @@ import { Button } from '../button/button';
 import styles from './sidebar.module.scss';
 
 const logo =
-    'https://static.wixstatic.com/shapes/610b66_0f8db3b01d974d6eb901be219f385e3f.svg'; // logo.svg (135x34)
+    'http://localhost:1880/logo'; // logo.svg (135x34)
 const upgradeTeaser =
     'https://static.wixstatic.com/shapes/610b66_18689aa2b4264e318355751f25a15cce.svg'; // sidebar-footer-upgrade.svg (67x75)
 
@@ -23,7 +23,7 @@ export const Sidebar = ({ className }: SidebarProps) => {
                     Overview
                 </Nav.Item>
 
-                <Nav.Item>
+                {/* <Nav.Item>
                     <Icon glyph="list" aria-hidden />
                     Transactions
                 </Nav.Item>
@@ -41,14 +41,14 @@ export const Sidebar = ({ className }: SidebarProps) => {
                 <Nav.Item>
                     <Icon glyph="verified" aria-hidden />
                     Goals
-                </Nav.Item>
+                </Nav.Item> */}
 
                 <Nav.Item>
                     <Icon glyph="settings" aria-hidden />
                     Settings
                 </Nav.Item>
             </Nav>
-            <div className={styles.footer}>
+            {/* <div className={styles.footer}>
                 <img
                     src={upgradeTeaser}
                     className={styles.footerIllustration}
@@ -61,7 +61,7 @@ export const Sidebar = ({ className }: SidebarProps) => {
                 <Button onClick={() => alert('Navigate to upgrade flow')}>
                     Upgrade to Premium
                 </Button>
-            </div>
+            </div> */}
         </div>
     );
 };

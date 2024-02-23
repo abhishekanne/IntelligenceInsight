@@ -8,6 +8,7 @@ import PageHeader from './components/page-header/page-header';
 import { NewTransaction } from './components/new-transaction/new-transaction';
 import { GetLoanBanner } from './components/get-loan-banner/get-loan-banner';
 import styles from './app.module.scss';
+import { Activities } from './components/activities/activities';
 
 function App() {
     return (
@@ -16,9 +17,9 @@ function App() {
                 <Section>
                     <Section.Content>
                         <PageHeader className={styles.header}>
-                            <PageHeader.Title>Weekly Sumup</PageHeader.Title>
+                            <PageHeader.Title>Activities Sumup</PageHeader.Title>
                             <PageHeader.Subtitle>
-                                Get summary of your weekly online transactions
+                                Get summary of your daily activities
                                 here
                             </PageHeader.Subtitle>
                         </PageHeader>
@@ -28,15 +29,17 @@ function App() {
                 <Section>
                     <Section.Content className={styles.dashboardGrid}>
                         <div className={styles.mainColumn}>
-                            <Cards />
-                            <TransactionHistory />
+                           {/* <Cards cardName='Abhishek Anne'/> */}
+                            {/* <TransactionHistory /> */}
                         </div>
                         <div className={styles.secondaryColumn}>
-                            <Goals />
+                            <Activities> <h1>Name</h1> </Activities>
+                            {/* <Goals /> */}
                             <OutcomeStatistics />
+                            
                             <div className={styles.userActionsSection}>
-                                <NewTransaction />
-                                <GetLoanBanner />
+                                {/* <NewTransaction /> */}
+                                {/* <GetLoanBanner /> */}
                             </div>
                         </div>
                     </Section.Content>

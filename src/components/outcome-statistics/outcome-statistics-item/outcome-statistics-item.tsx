@@ -4,7 +4,7 @@ import { Icon, Glyph } from '../../icon/icon';
 import { Progress } from '../../progress/progress';
 import styles from './outcome-statistics-item.module.scss';
 
-type OutcomeStatisticsItemType = 'shopping' | 'electronics' | 'travel';
+type OutcomeStatisticsItemType = 'shopping' | 'electronics' | 'travel' | 'person';
 
 interface OutcomeStatisticsItemProps extends LiHTMLAttributes<HTMLLIElement> {
     label: string;
@@ -21,6 +21,7 @@ export const OutcomeStatisticsItem = ({
         shopping: 'shoppingCart',
         electronics: 'localShipping',
         travel: 'hiking',
+        person: 'person'
     };
 
     return (

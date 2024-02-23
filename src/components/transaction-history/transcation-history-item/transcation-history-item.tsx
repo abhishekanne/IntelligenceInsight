@@ -7,8 +7,8 @@ interface TransactionHistoryItemProps extends LiHTMLAttributes<HTMLLIElement> {
     type: string;
     typeLabel: string;
     date: string;
-    amount: number;
-    currency: string;
+    amount?: number;
+    currency?: string;
 }
 
 export const TransactionHistoryItem = ({
@@ -16,13 +16,8 @@ export const TransactionHistoryItem = ({
     type,
     typeLabel,
     date,
-    amount,
-    currency,
+
 }: TransactionHistoryItemProps) => {
-    const formattedAmount = new Intl.NumberFormat(undefined, {
-        style: 'currency',
-        currency: currency,
-    }).format(amount);
 
     const glyphMap: { [key: string]: Glyph } = {
         shopping: 'shoppingCart',
@@ -40,7 +35,7 @@ export const TransactionHistoryItem = ({
             </span>
             <span className={styles.type}>{typeLabel}</span>
             <span className={styles.date}>{date}</span>
-            <span className={styles.amount}>{formattedAmount}</span>
+            {/* <span className={styles.amount}>{formattedAmount}</span> */}
         </li>
     );
 };

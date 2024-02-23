@@ -1,87 +1,151 @@
 import Card from '../card/card';
 import { TransactionHistoryItem } from './transcation-history-item/transcation-history-item';
 import styles from './transaction-history.module.scss';
+import { JiraMessage, MrioMessage, SlackMessage, m365Message } from '../activities/activitiesmodel';
 
-const transactions = [
-    {
-        receiver: 'Tesco Market',
-        type: 'shopping',
-        typeLabel: 'Shopping',
-        date: 'Jul 14, 2022',
-        amount: 120375.6,
-        currency: 'USD',
-    },
-    {
-        receiver: 'ElectroMen Market',
-        type: 'shopping',
-        typeLabel: 'Shopping',
-        date: 'Jul 13, 2022',
-        amount: 250,
-        currency: 'USD',
-    },
-    {
-        receiver: 'Fiorgio Restaurant',
-        type: 'food',
-        typeLabel: 'Food',
-        date: 'Jul 7, 2022',
-        amount: 19.5,
-        currency: 'USD',
-    },
-    {
-        receiver: 'John Mathew Kayne',
-        type: 'sport',
-        typeLabel: 'Sport',
-        date: 'Jun 30, 2022',
-        amount: 75.67,
-        currency: 'USD',
-    },
-    {
-        receiver: 'Ann Marlin',
-        type: 'shopping',
-        typeLabel: 'Shopping',
-        date: 'Jun 30, 2022',
-        amount: 430,
-        currency: 'USD',
-    },
-];
 
-export const TransactionHistory = () => {
-    return (
-        <Card>
-            <Card.Title>Transaction History</Card.Title>
-            <Card.Content>
-                <div className={styles.legend}>
-                    <span className={styles.receiver}>Receiver</span>
-                    <span className={styles.type}>Type</span>
-                    <span className={styles.date}>Date</span>
-                    <span className={styles.amount}>Amount</span>
-                </div>
-                <ul className={styles.transactionList}>
-                    {transactions.map(
-                        (
-                            {
-                                receiver,
-                                type,
-                                typeLabel,
-                                date,
-                                amount,
-                                currency,
-                            },
-                            index
-                        ) => (
-                            <TransactionHistoryItem
-                                key={index}
-                                receiver={receiver}
-                                type={type}
-                                typeLabel={typeLabel}
-                                date={date}
-                                amount={amount}
-                                currency={currency}
-                            />
-                        )
-                    )}
-                </ul>
-            </Card.Content>
-        </Card>
-    );
+interface TransactionHistoryProps {
+    cardTitle:string
+    type: 'SLACK' | 'JIRA' | 'M365' | 'MIRO'
+    slackMessages?:SlackMessage[]
+    miroMessages?:MrioMessage[]
+    jiraMessages?:JiraMessage[]
+    m365Messages?:m365Message[]
+}
+
+
+export const TransactionHistory = (transactionHistoryProps:TransactionHistoryProps) => {
+    console.log(transactionHistoryProps.type)
+    switch (transactionHistoryProps.type) {
+        case 'SLACK':
+            return (
+        
+                <Card>
+                    <Card.Title>{transactionHistoryProps.cardTitle}</Card.Title>
+                    <Card.Content>
+                        <div className={styles.legend}>
+                            <span className={styles.receiver}>Message</span>
+                            <span className={styles.date}>Date</span>
+                            <span className={styles.type}>App</span>
+                            {/* <span className={styles.amount}>Amount</span> */}
+                        </div>
+                        <ul className={styles.transactionList}>
+                            {transactionHistoryProps.slackMessages?.map(
+                                (
+                                    slakMessage,
+                                    index
+                                ) => (
+                                    <TransactionHistoryItem
+                                        key={index}
+                                        receiver={slakMessage.message}
+                                        type={'notifications'}
+                                        typeLabel={transactionHistoryProps.type}
+                                        date={slakMessage.timestamp}
+
+                                    />
+                                )
+                            )}
+                        </ul>
+                    </Card.Content>
+                </Card>
+            );
+        case 'JIRA':
+            return (
+        
+                <Card>
+                    <Card.Title>{transactionHistoryProps.cardTitle}</Card.Title>
+                    <Card.Content>
+                        <div className={styles.legend}>
+                            <span className={styles.receiver}> ID</span>
+                            <span className={styles.date}>Date</span>
+                            <span className={styles.type}>Summary</span>
+                            {/* <span className={styles.amount}>Amount</span> */}
+                        </div>
+                        <ul className={styles.transactionList}>
+                            {transactionHistoryProps.jiraMessages?.map(
+                                (
+                                    jiraMessage,
+                                    index
+                                ) => (
+                                    <TransactionHistoryItem
+                                        key={index}
+                                        receiver={jiraMessage.issue_id}
+                                        type={'Notification'}
+                                        typeLabel={transactionHistoryProps.type}
+                                        date={jiraMessage.timestamp}
+
+                                    />
+                                )
+                            )}
+                        </ul>
+                    </Card.Content>
+                </Card>
+            );
+        case 'M365':
+            return (
+        
+                <Card>
+                    <Card.Title>{transactionHistoryProps.cardTitle}</Card.Title>
+                    <Card.Content>
+                        <div className={styles.legend}>
+                            <span className={styles.receiver}>Events</span>
+                            <span className={styles.date}>Date</span>
+                            <span className={styles.type}>App</span>
+                            {/* <span className={styles.amount}>Amount</span> */}
+                        </div>
+                        <ul className={styles.transactionList}>
+                            {transactionHistoryProps.m365Messages?.map(
+                                (
+                                   m365Messages,
+                                    index
+                                ) => (
+                                    <TransactionHistoryItem
+                                        key={index}
+                                        receiver={m365Messages.event}
+                                        type={'mail'}
+                                        typeLabel={transactionHistoryProps.type}
+                                        date={m365Messages.timestamp}
+
+                                    />
+                                )
+                            )}
+                        </ul>
+                    </Card.Content>
+                </Card>
+            );
+        case 'MIRO':
+            return (
+        
+                <Card>
+                    <Card.Title>{transactionHistoryProps.cardTitle}</Card.Title>
+                    <Card.Content>
+                        <div className={styles.legend}>
+                            <span className={styles.receiver}>Activity</span>
+                            <span className={styles.date}>Date</span>
+                            <span className={styles.type}>App</span>
+                            {/* <span className={styles.amount}>Amount</span> */}
+                        </div>
+                        <ul className={styles.transactionList}>
+                            {transactionHistoryProps.miroMessages?.map(
+                                (
+                                  miroMessage,
+                                    index
+                                ) => (
+                                    <TransactionHistoryItem
+                                        key={index}
+                                        receiver={miroMessage.activity}
+                                        type={transactionHistoryProps.type}
+                                        typeLabel={transactionHistoryProps.type}
+                                        date={miroMessage.timestamp}
+
+                                    />
+                                )
+                            )}
+                        </ul>
+                    </Card.Content>
+                </Card>
+            );    
+
+    }
+
 };

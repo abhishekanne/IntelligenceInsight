@@ -37,7 +37,7 @@ const PageHeader = ({ className, children }: PageHeaderProps) => {
                 <div className={styles.userSection}>
                     <div className={styles.avatar} />
                     <div className={styles.userDetails}>
-                        <span>Andrew</span>
+                        <span>Abhishek</span>
                         <span className={styles.userAccountType}>
                             Admin account
                         </span>
